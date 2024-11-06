@@ -1,0 +1,27 @@
+@import './base.css';
+
+#app {
+  max-width: var(--app-width);
+  margin: 0 auto;
+  padding: var(--app-padding);
+  font-weight: normal;
+}
+
+.link,
+a {
+  color: var(--app-color-link);
+}
+
+.link:hover,
+a:hover {
+  text-decoration: none;
+}
+
+a.active {
+  color: #d6d3d3;
+  text-decoration: none;
+}
+
+p {
+  margin: 10px 0;
+}

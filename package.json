@@ -1,8 +1,22 @@
 {
-  "name": "vue-boilerplate",
+  "name": "vue-example-boilerplate",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "type": "module",
+  "author": "Maksim Zhuchkov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maksimkaJCHK/vue-example-boilerplate"
+  },
+  "description": "Vue.js example boilerplate",
+  "keywords": [
+    "vue.js",
+    "vuejs",
+    "vue with express",
+    "vue with express.js",
+    "vuejs with express.js"
+  ],
   "scripts": {
     "dev": "vite --mode local-dev",
     "build": "vite build",

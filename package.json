@@ -15,7 +15,9 @@
     "vuejs",
     "vue with express",
     "vue with express.js",
-    "vuejs with express.js"
+    "vuejs with express.js",
+    "vuejs with expressjs",
+    "vue.js with express.js"
   ],
   "scripts": {
     "dev": "vite --mode local-dev",

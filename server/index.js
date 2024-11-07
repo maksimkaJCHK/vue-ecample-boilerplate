@@ -6,6 +6,7 @@ const port = 8000;
 
 import registration from './responses/registration.js';
 import auth from './responses/auth.js';
+import news from './responses/news.js';
 
 let userInfo = {
   name: 'максим',
@@ -35,6 +36,7 @@ const cUserInfo= ({
 }
 const regResp = registration(cUserInfo);
 const reqAuth = auth(userInfo);
+const reqNews = news(userInfo.token);
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -53,6 +55,10 @@ app.post('/api/registration', regResp, (req, res, next) => {
 
 app.post('/api/auth', reqAuth, (req, res, next) => {
   console.log('Post запрос для формы авторизации');
+});
+
+app.get('/api/news', reqNews, (req, res, next) => {
+  console.log('GET запрос для списка новостей');
 });
 
 app.listen(port, () => {

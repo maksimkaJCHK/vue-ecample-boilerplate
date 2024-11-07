@@ -1,4 +1,4 @@
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import { getRandomNumb } from '@/helpers/helpers.js';
 
 const useId = () => {
@@ -8,7 +8,7 @@ const useId = () => {
     id.value = `id-${getRandomNumb(100_000_000_000)}`;
   };
 
-  onMounted(generateId);
+  onBeforeMount(generateId);
 
   return { id };
 }

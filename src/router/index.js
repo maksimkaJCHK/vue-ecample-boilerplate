@@ -1,7 +1,10 @@
 import { computed } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import { bUrlToAddr } from '@/helpers/helpers.js';
+
 import HomeView from '../views/HomeView.vue';
+import NewsCard from '../views/NewsCard.vue';
+
 // Служебные формы
 import Auth from '@/views/servicesForms/auth/Auth.vue';
 import RestorePassword from '@/views/servicesForms/restore-password/RestorePassword.vue';
@@ -29,6 +32,7 @@ const router = createRouter({
         isAuth: true
       },
     },
+    // Формы регистрации и прочее
     {
       path: '/auth',
       name: 'auth',
@@ -72,6 +76,7 @@ const router = createRouter({
         isAuth: false
       },
     },
+    // Остальные стрнаицы
     {
       path: '/about',
       name: 'about',
@@ -81,6 +86,16 @@ const router = createRouter({
         isAuth: false
       },
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/news/:id',
+      name: 'newsCard',
+      component: NewsCard,
+      meta: {
+        title: "Страница описания",
+        template: 'base',
+        isAuth: false
+      },
     },
     { 
       path: '/404',

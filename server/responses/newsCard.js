@@ -3,8 +3,9 @@ import bToken from '../services/bToken.js';
 
 import newsData from '../data/news.js';
 
-const news = async (req, res, next) => {
+const newsCard = async (req, res, next) => {
   const token = bToken();
+  const idNews = Number(req.params.id);
 
   await delay();
 
@@ -22,10 +23,10 @@ const news = async (req, res, next) => {
     res.contentType('application/json');
     res.status(200);
   
-    res.send(newsData);
+    res.send(newsData.filter(({ id }) => id === idNews)[0]);
   }
 
   next();
 }
 
-export default news;
+export default newsCard;

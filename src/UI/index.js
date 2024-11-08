@@ -7,6 +7,7 @@ import UIForm from './UIForm.vue';
 import UISpiner from './UISpiner.vue';
 import UIInfoBlock from './UIInfoBlock.vue';
 import UIClose from './UIClose.vue';
+import UINullText from './UINullText.vue';
 
 export default [
   {
@@ -44,5 +45,9 @@ export default [
   {
     name: 'ui-close',
     ...UIClose
+  },
+  {
+    name: 'ui-null-text',
+    ...UINullText
   }
 ];

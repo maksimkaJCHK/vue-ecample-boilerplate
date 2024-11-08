@@ -62,6 +62,8 @@ const useAPI = ({
     } finally {
       load.value = false;
     }
+
+    if (servResp.value.status === 401) store.logOut();
   }
 
   return {

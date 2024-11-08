@@ -1,6 +1,12 @@
 <template>
   <ui-container>
-    <news-list :items="newsItems" />
+    <news-list
+      :items="newsItems"
+      :load="load"
+      :error="error"
+      :isError="isError"
+      :closeError="closeError"
+    />
   </ui-container>
 </template>
 

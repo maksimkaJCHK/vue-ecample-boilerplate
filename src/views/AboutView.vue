@@ -1,7 +1,10 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <ui-container class="about-page">
+    <h1>About</h1>
+    <p>
+      Какой-то текст о компании, может быть его будет много, а может быть и нет.
+    </p>
+  </ui-container>
 </template>
 
 <script>
@@ -15,11 +18,7 @@
 </script>
 
 <style>
-  @media (min-width: 1024px) {
-    .about {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
+  .about-page {
+    font-size: 16px;
   }
 </style>

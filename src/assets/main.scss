@@ -1,0 +1,79 @@
+@import './base.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  color: var(--app-color-text);
+  background: var(--app-background);
+  font: var(--app-font-size)/120% var(--app-font-family);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  max-width: var(--app-width);
+  margin: 0 auto;
+  padding: var(--app-padding);
+  font-weight: normal;
+}
+
+.link,
+a {
+  color: var(--app-link-color);
+}
+
+.link:hover,
+a:hover {
+  text-decoration: underline;
+  color: var(--app-link-hover-color);
+}
+
+.link:active,
+a:active {
+  text-decoration: none;
+  color: var(--app-link-active-color);
+}
+
+a.active {
+  color: #d6d3d3;
+  text-decoration: none;
+}
+
+h1,
+.h1 {
+  font: var(--app-h1-font);
+  margin: var(--app-h1-margin);
+  padding: var(--app-h1-padding);
+}
+
+h2,
+.h2 {
+  font: var(--app-h2-font);
+  margin: var(--app-h2-margin);
+  padding: var(--app-h2-padding);
+}
+
+h3,
+.h3 {
+  font: var(--app-h3-font);
+  margin: var(--app-h3-margin);
+  padding: var(--app-h3-padding);
+}
+
+h4,
+.h4 {
+  font: var(--app-h4-font);
+  margin: var(--app-h4-margin);
+  padding: var(--app-h4-padding);
+}
+
+p {
+  margin: 10px 0;
+}

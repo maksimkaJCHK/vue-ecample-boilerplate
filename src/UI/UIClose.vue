@@ -33,6 +33,9 @@
 
 <style lang="scss">
   .close {
+    --bg: var(--app-danger-color);
+    --line: #fff;
+
     cursor: pointer;
     position: absolute;
     display: inline-block;
@@ -42,15 +45,25 @@
     }
 
     &-bg {
-      fill: #02ff02;
+      fill: var(--bg);
+      transition: fill var(--app-transition);
     }
 
     &-line-bg {
-      fill: #ef3131;
+      fill: var(--line);
+      transition: fill var(--app-transition);
     }
 
-    &:hover &-bg {
-      fill: #13f60be3;
+    &:hover {
+      --bg: var(--app-danger-color-hover);
+    }
+
+    .isError & {
+      --bg: var(--app-primary-color);
+    }
+
+    .isError &:hover{
+      --bg: var(--app-primary-color-hover);
     }
   }
 </style>

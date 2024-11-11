@@ -2,7 +2,7 @@
   <div
     v-if="props.isOpen"
     class="info-block"
-    :class="{ isError: props.typeBlock === 'error' }"
+    :class="classBtn"
   >
     <slot></slot>
     <ui-close
@@ -13,6 +13,8 @@
 </template>
 
 <script setup>
+  import { computed } from 'vue';
+
   const props = defineProps({
     isOpen: {
       type: Boolean,
@@ -26,18 +28,32 @@
 
   const emit = defineEmits(['close-error']);
   const closeInfoBlock = () => emit('close-error');
+
+  const classBtn = computed(() => ({
+    isError: props.typeBlock === 'error',
+    warning: props.typeBlock === 'warning',
+    success: props.typeBlock === 'success',
+  }));
 </script>
 
 <style lang="scss">
   .info-block {
     color: #fff;
-    background: #08089f;
+    background: var(--app-primary-color);
     position: relative;
     padding: 15px 45px 15px 15px;
     border-radius: var(--app-border-radius);
 
     &.isError {
-      background-color: #cd3232;
+      background-color: var(--app-danger-color);
+    }
+
+    &.warning {
+      background-color: var(--app-warning-color);
+    }
+
+    &.success {
+      background-color: var(--app-success-color);
     }
 
     .close {

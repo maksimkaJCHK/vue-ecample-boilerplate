@@ -26,9 +26,12 @@
 </template>
 
 <script setup>
+  import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/useAuthStore.js';
 
-  const { login, logOut } = useAuthStore();
+  const authStore = useAuthStore();
+  const { logOut } = authStore;
+  const { login } = storeToRefs(authStore)
 </script>
 
 <style lang="scss" scoped>

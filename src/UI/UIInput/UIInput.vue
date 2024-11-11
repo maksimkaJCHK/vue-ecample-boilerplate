@@ -67,8 +67,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/_easing.scss';
-
   .inp {
     width: 100%;
     display: block;

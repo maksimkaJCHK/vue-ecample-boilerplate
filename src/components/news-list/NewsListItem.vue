@@ -42,6 +42,8 @@
     }
 
     .title {
+      margin: 0 0 10px;
+
       &,
       a {
         font-size: 20px;
@@ -49,7 +51,7 @@
       }
 
       a {
-        color: var(--color-text);
+        color: var(--app-color-text);
         text-decoration: none;
 
         &:hover {
@@ -59,13 +61,14 @@
     }
 
     .description {
-      font-size: 16px;
+      margin: 10px 0 5px;
     }
 
     .link {
       &,
       a {
         font-size: 13px;
+        line-height: 120%;
       }
     }
   }

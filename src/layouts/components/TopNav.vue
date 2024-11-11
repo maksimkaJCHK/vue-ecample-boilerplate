@@ -2,6 +2,7 @@
   <nav class="top-nav">
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About</RouterLink>
+    <RouterLink to="/palete">Palete</RouterLink>
   </nav>
 </template>
 
@@ -26,7 +27,7 @@
       }
 
       &.router-link-exact-active {
-        color: var(--color-text);
+        color: var(--app-color-text);
 
         &:hover {
           background-color: transparent;

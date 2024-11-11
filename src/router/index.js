@@ -3,7 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { bUrlToAddr } from '@/helpers/helpers.js';
 
 import HomeView from '../views/HomeView.vue';
-import NewsCard from '../views/NewsCard.vue';
+import NewsCardView from '../views/NewsCardView.vue';
+import PaleteView from '../views/PaleteView.vue';
 
 // Служебные формы
 import Auth from '@/views/servicesForms/auth/Auth.vue';
@@ -90,9 +91,19 @@ const router = createRouter({
     {
       path: '/news/:id',
       name: 'newsCard',
-      component: NewsCard,
+      component: NewsCardView,
       meta: {
         title: "Страница описания",
+        template: 'base',
+        isAuth: false
+      },
+    },
+    {
+      path: '/palete',
+      name: 'palete',
+      component: PaleteView,
+      meta: {
+        title: "Цветовая тема",
         template: 'base',
         isAuth: false
       },

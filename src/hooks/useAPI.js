@@ -33,11 +33,18 @@ const useAPI = ({
     isError.value = true;
   }
 
-  const request = async (params) => {
+  const request = async (params = {}) => {
     if (method !== 'get' && Object.keys(params).length) {
       config = {
         ...config,
         data: params,
+      }
+    }
+
+    if (method === 'get' && Object.keys(params).length) {
+      config = {
+        ...config,
+        params,
       }
     }
 

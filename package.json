@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vite --mode local-dev",
-    "build": "vite build",
+    "build": "vite build --mode prod",
     "preview": "vite preview",
     "server": "nodemon ./server/index.js"
   },

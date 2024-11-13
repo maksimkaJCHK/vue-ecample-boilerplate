@@ -13,6 +13,7 @@
       :placeholder="placeholder"
       :autocomplete="autocomplete"
       class="inp"
+      :class="{ isError: props.errorText }"
     >
 
     <div
@@ -72,13 +73,18 @@
     display: block;
     outline: none;
     color: #000;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: var(--app-border-radius);
     font: 16px/120% var(--app-font-family);
     box-sizing: border-box;
-    border: 1px solid #000;
+    border: 1px solid var(--app-color-text);
     margin-bottom: 24px;
     position: relative;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     &::placeholder {
       color: #000;
@@ -86,8 +92,18 @@
     }
 
     &:focus {
+      box-shadow: 0 0 0 .25rem rgba(55, 90, 127, .25);
+
       &::placeholder {
         opacity: 0;
+      }
+    }
+
+    &.isError {
+      border-color: var(--app-danger-color);
+
+      &:focus {
+        box-shadow: 0 0 0 .25rem rgba(200, 90, 127, .25);
       }
     }
 
@@ -96,14 +112,14 @@
     }
 
     &-error {
-      color: #f00;
+      color: var(--app-danger-color);
       min-height: 24px;
       margin-top: -24px;
       margin-bottom: -24px;
     }
 
     &-pas-icon {
-      top: 7px;
+      top: 11px;
       right: 5px;
       width: 20px;
       height: 20px;

@@ -6,6 +6,7 @@
     type="checkbox"
     class="ui-checkbox"
   />
+
   <label
     :for="id"
     class="ui-checkbox-label"
@@ -55,8 +56,8 @@
       display: inline-block;
       position: relative;
       background: #fff;
-      padding: 2px 10px 2px 25px;
-      border: 1px solid #aaa;
+      padding: 8px 10px 8px 25px;
+      border: 1px solid var(--app-primary-color);
       box-shadow: 0 0 10px #aaa;
       border-radius: var(--app-border-radius);
 
@@ -67,15 +68,15 @@
         position: absolute;
       }
       &::before {
-        top: 7px;
+        top: 11px;
         left: 5px;
         width: 14px;
         height: 14px;
-        border: 1px solid #0b0bae;
+        border: 1px solid var(--app-primary-color);
       }
 
       &::after {
-        top: 10px;
+        top: 14px;
         left: 8px;
         width: 8px;
         height: 8px;

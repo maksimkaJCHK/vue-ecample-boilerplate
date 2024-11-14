@@ -12,9 +12,12 @@
     </div>
 
     <div class="top-info-serv">
-      <div class="top-info-row">
-        Личный кабинет
-      </div>
+      <router-link 
+        :to="{ name: 'personalAccount' }"
+        class="top-info-row"
+        >
+        Личные настройки
+      </router-link>
       <div
         class="top-info-row"
         @click="logOut"
@@ -26,6 +29,7 @@
 </template>
 
 <script setup>
+  import { RouterLink } from 'vue-router';
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/useAuthStore.js';
 
@@ -82,9 +86,11 @@
     }
 
     &-row {
+      color: var(--app-color-text);
       cursor: pointer;
       padding: 3px 10px;
       display: block;
+      text-decoration: none;
       border-bottom: 1px solid #000;
       &:hover {
         background: #f1e5e5;

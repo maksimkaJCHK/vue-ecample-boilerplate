@@ -10,6 +10,8 @@ import PaleteView from '../views/PaleteView.vue';
 import Auth from '@/views/servicesForms/auth/Auth.vue';
 import RestorePassword from '@/views/servicesForms/restore-password/RestorePassword.vue';
 import Registration from '@/views/servicesForms/registration/Registration.vue';
+import PersonalAccount from '@/views/servicesForms/personal-account/PersonalAccount.vue';
+
 // Служебные страницы
 import NotFound from '@/views/services/NotFound.vue';
 import TermsServices from '@/views/services/TermsServices.vue';
@@ -75,6 +77,16 @@ const router = createRouter({
         title: "Условия обслуживания",
         template: 'auth',
         isAuth: false
+      },
+    },
+    {
+      path: '/personal-account',
+      name: 'personalAccount',
+      component: PersonalAccount,
+      meta: {
+        title: "личный кабинет пользователя",
+        template: 'base',
+        isAuth: true
       },
     },
     // Остальные стрнаицы

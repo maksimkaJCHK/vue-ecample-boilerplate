@@ -11,22 +11,32 @@ import {
   validateName,
   validateLastName,
   validateConfirmPas,
-  validateEmail
+  validateEmail,
+  validateNewPas
 } from '@/views/servicesForms/typeValidate.js';
 
 import { typeValidate } from '@/views/servicesForms/helpers.js';
 
-const useAuth = () => {
-  const name = ref('');
+const usePersonalAccount = () => {
+  const {
+    name: nameLS,
+    lastName: lastNameLS,
+    login: loginLS,
+    email: emailLS,
+  } = useAuthStore();
+
+  const name = ref(nameLS);
   const nameError = ref('');
-  const lastName = ref('');
+  const lastName = ref(lastNameLS);
   const lastNameError = ref('');
-  const login = ref('');
+  const login = ref(loginLS);
   const loginError = ref('');
-  const email = ref('');
+  const email = ref(emailLS);
   const emailError = ref('');
   const password = ref('');
   const passwordError = ref('');
+  const newPas = ref('');
+  const newPasError = ref('');
   const confirmPas = ref('');
   const confirmPasError = ref('');
   const confirmTermOfServ = ref(false);
@@ -43,8 +53,8 @@ const useAuth = () => {
     response,
     request,
   } = useAPI({
-    method: 'post',
-    url: '/registration'
+    method: 'put',
+    url: '/personal-account'
   });
 
   const typeValidate = ({
@@ -95,11 +105,17 @@ const useAuth = () => {
     validateFunc: validatePassword
   });
 
+  const validNewPas = () => typeValidate({
+    input: newPas,
+    error: newPasError,
+    validateFunc: validateNewPas
+  });
+
   const validConfirmPas= () => {
     let isValid = true;
     confirmPasError.value = '';
 
-    const { isError, errorText } = validateConfirmPas(password.value, confirmPas.value);
+    const { isError, errorText } = validateConfirmPas(newPas.value, confirmPas.value);
 
     if (isError) {
       confirmPasError.value = errorText;
@@ -117,16 +133,18 @@ const useAuth = () => {
     const { isValid: isValidLastName } = validLastName();
     const { isValid: isValidLogin } = validLogin();
     const { isValid: isValidPassword } = validPassword();
+    const { isValid: isValidNewPas} = validNewPas();
     const { isValid: isValidConfirmPas } = validConfirmPas();
     const { isValid: isValidEmail } = validEmail();
 
-    if (isValidLogin && isValidPassword && isValidName && isValidLastName && isValidConfirmPas && isValidEmail && confirmTermOfServ.value) {
+    if (isValidLogin && isValidPassword && isValidName && isValidLastName && isValidConfirmPas && isValidEmail && isValidNewPas && confirmTermOfServ.value) {
       await request({
         name: name.value,
         lastName: lastName.value,
         login: login.value,
         email: email.value,
-        password: password.value
+        password: newPas.value,
+        oldPassword: password.value,
       });
 
       if (!error.value) {
@@ -138,7 +156,7 @@ const useAuth = () => {
           cLastName: lastName.value,
           cLogin: login.value,
           cEmail: email.value,
-          cPassword: password.value,
+          cPassword: newPas.value,
         });
 
         const url = route.query.from ? bUrl(route.query.from) : '/';
@@ -153,9 +171,13 @@ const useAuth = () => {
     if (isValidate.value) validLogin(); 
   });
 
-  watch([password, confirmPas], () => {
+  watch(password, () => {
+    if (isValidate.value) validPassword();
+  });
+
+  watch([newPas, confirmPas], () => {
     if (isValidate.value) {
-      validPassword();
+      validNewPas();
       validConfirmPas();
     }
   });
@@ -184,6 +206,8 @@ const useAuth = () => {
     emailError,
     password,
     passwordError,
+    newPas,
+    newPasError,
     confirmPas,
     confirmPasError,
     submForm,
@@ -191,4 +215,4 @@ const useAuth = () => {
   }
 }
 
-export default useAuth;
+export default usePersonalAccount;

@@ -8,17 +8,18 @@ import registration from './responses/registration.js';
 import auth from './responses/auth.js';
 import news from './responses/news.js';
 import newsCard from './responses/newsCard.js';
+import personalAccount from './responses/personalAccount.js';
 
 let userInfo = {
   name: 'максим',
   lastName: 'жучков',
   login: 'max',
   email: 'max@ya.ru',
-  password: '11aaAA#',
+  password: '11aaAA#',//#11aaAA
   token: null
 };
 
-const cUserInfo= ({
+const cUserInfo = ({
   name,
   lastName,
   login,
@@ -26,17 +27,17 @@ const cUserInfo= ({
   password,
   token,
 }) => {
-  userInfo = {
-    name,
-    lastName,
-    login,
-    email,
-    password,
-    token,
-  }
+  userInfo.name = name;
+  userInfo.lastName = lastName;
+  userInfo.login = login;
+  userInfo.email = email;
+  userInfo.password = password;
+  userInfo.token = token;
 }
+
 const regResp = registration(cUserInfo);
 const reqAuth = auth(userInfo);
+const reqPerAccount = personalAccount(userInfo, cUserInfo);
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -65,6 +66,9 @@ app.get('/api/news/:id', newsCard, (req, res, next) => {
   console.log('GET запрос для списка карточки новости');
 });
 
+app.put('/api/personal-account', reqPerAccount, (req, res, next) => {
+  console.log('PUT запрос на изменение пользователя');
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

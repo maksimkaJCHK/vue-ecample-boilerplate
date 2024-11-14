@@ -44,6 +44,18 @@ export const validatePassword = (val) => {
   return { isError, errorText };
 }
 
+export const validateNewPas = (val) => {
+  const { isError, errorText } = validateForm.setVal(val)
+    .isRequired('Введите новый пароль')
+    .isNoSpaces('Пароль не может содержать пробелы')
+    .isNoRusText('Пароль не может содержать русские буквы')
+    //.min(6, 'Пароль не может быть короче 6 символов')
+    //.isManyRepeat(3, 'Пароль слишком простой, слишком много повторяющихся символов');
+    .isStrongPassword('Пароль должен содержать цифры, строчные, заглавые буквы и спецсимволы, и лежать в диапозоне от 6 до 30 символов', 6, 30)
+
+  return { isError, errorText };
+}
+
 export const validateConfirmPas = (val, confirmVal) => {
   const { isError, errorText } = validateForm.setVal(val)
     .isIdenticalWords(confirmVal, 'Пароли не совпадают');

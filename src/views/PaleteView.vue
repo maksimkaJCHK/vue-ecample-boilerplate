@@ -2,6 +2,8 @@
   <ui-container class="about-page">
     <h1>Palete</h1>
 
+    <h2>Button</h2>
+
     <div class="about-page-row flex">
       <ui-button>
         Type
@@ -56,6 +58,8 @@
         Danger
       </ui-button>
     </div>
+
+    <h2>Info-block</h2>
 
     <div class="about-page-row">
       <ui-info-block isOpen="true" typeBlock="error"  >

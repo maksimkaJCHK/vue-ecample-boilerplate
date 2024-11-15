@@ -8,9 +8,9 @@ import registration from './responses/registration.js';
 import auth from './responses/auth.js';
 import news from './responses/news.js';
 import newsCard from './responses/newsCard.js';
-import personalAccount from './responses/personalAccount.js';
+import settings from './responses/settings.js';
 
-let userInfo = {
+const userInfo = {
   name: 'максим',
   lastName: 'жучков',
   login: 'max',
@@ -37,7 +37,7 @@ const cUserInfo = ({
 
 const regResp = registration(cUserInfo);
 const reqAuth = auth(userInfo);
-const reqPerAccount = personalAccount(userInfo, cUserInfo);
+const reqSettings= settings(userInfo, cUserInfo);
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -66,7 +66,7 @@ app.get('/api/news/:id', newsCard, (req, res, next) => {
   console.log('GET запрос для списка карточки новости');
 });
 
-app.put('/api/personal-account', reqPerAccount, (req, res, next) => {
+app.put('/api/settings', reqSettings, (req, res, next) => {
   console.log('PUT запрос на изменение пользователя');
 });
 

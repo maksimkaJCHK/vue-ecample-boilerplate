@@ -1,7 +1,7 @@
 import delay from '../services/delay.js';
 import bToken from '../services/bToken.js';
 
-const personalAccount = (userInfo, cUserInfo) => {
+const settings = (userInfo, cUserInfo) => {
   return async (req, res, next) => {
     const token = bToken();
 
@@ -52,6 +52,8 @@ const personalAccount = (userInfo, cUserInfo) => {
         res.status(200);
       
         res.send({
+          status: 'ок',
+          message: 'Данные пользователя успешно изменены',
           token
         });
       }
@@ -61,4 +63,4 @@ const personalAccount = (userInfo, cUserInfo) => {
   }
 }
 
-export default personalAccount;
+export default settings;

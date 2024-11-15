@@ -7,7 +7,7 @@
     <ui-info-block
       :isOpen="props.isError"
       typeBlock="error"
-      @close-error="props.closeError"
+      @close-block="props.closeError"
     >
       {{ props.error }}
     </ui-info-block>

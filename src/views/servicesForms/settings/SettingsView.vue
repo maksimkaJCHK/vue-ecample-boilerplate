@@ -1,9 +1,17 @@
 <template>
   <ui-container>
     <ui-form @submit.prevent="submForm">
-      <h1>Личные настройки</h1>
+      <h1>Настройки пользователя</h1>
 
       <ui-spiner :load="load"></ui-spiner>
+
+      <ui-info-block
+        :isOpen="isError || isRespOk"
+        :typeBlock="isError && 'error'"
+        @close-block="closeInfoBlock"
+      >
+        {{ error || response.message }}
+      </ui-info-block>
 
       <div class="form-group">
         <div class="form-row">
@@ -84,16 +92,27 @@
   import { useRouter } from 'vue-router';
 
   import ServicesNavigation from '@/views/servicesForms/ServicesNavigation.vue';
-  import usePersonalAccount from './usePersonalAccount.js';
+  import useSettings from './useSettings.js';
 
   const router = useRouter();
 
   const goToTermsServices = () => {
-    let route = router.resolve({ name: 'termsServices' });
+    const route = router.resolve({ name: 'termsServices' });
     window.open(route.href, '_blank');
   }
 
+  const closeInfoBlock = () => {
+    if (isError.value) closeError();
+    if (isRespOk.value) closeIsRespOk();
+  }
+
   const {
+    error,
+    isError,
+    closeError,
+    isRespOk,
+    closeIsRespOk,
+    response,
     load,
     name,
     nameError,
@@ -110,8 +129,8 @@
     submForm,
     confirmPas,
     confirmPasError,
-    confirmTermOfServ
-  } = usePersonalAccount();
+    confirmTermOfServ,
+  } = useSettings();
 </script>
 
 <style lang="scss">

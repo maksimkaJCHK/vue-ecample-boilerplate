@@ -9,6 +9,7 @@ const useAPI = ({
   const load = ref(false);
   const error = ref(null);
   const isError = ref(false);
+  const isRespOk= ref(false);
   const response = ref(null);
   const servResp = ref(null);
   const store = useAuthStore();
@@ -31,6 +32,14 @@ const useAPI = ({
 
   const openError = () => {
     isError.value = true;
+  }
+
+  const closeIsRespOk = () => {
+    isRespOk.value = false;
+  }
+
+  const openIsRespOk= () => {
+    isRespOk.value = true;
   }
 
   const request = async (params = {}) => {
@@ -58,6 +67,7 @@ const useAPI = ({
       servResp.value = servicesResp;
       error.value = null;
 
+      openIsRespOk();
       closeError();
     } catch (er) {
       const { data, ...servicesResponse } = er.response;
@@ -66,6 +76,7 @@ const useAPI = ({
       servResp.value = servicesResponse;
 
       openError();
+      closeIsRespOk();
     } finally {
       load.value = false;
     }
@@ -78,6 +89,8 @@ const useAPI = ({
     error,
     isError,
     request,
+    isRespOk,
+    closeIsRespOk,
     response,
     closeError,
     openError,

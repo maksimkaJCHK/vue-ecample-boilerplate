@@ -26,8 +26,9 @@
     }
   });
 
-  const emit = defineEmits(['close-error']);
-  const closeInfoBlock = () => emit('close-error');
+  const emit = defineEmits(['close-block']);
+
+  const closeInfoBlock = () => emit('close-block');
 
   const classBtn = computed(() => ({
     isError: props.typeBlock === 'error',

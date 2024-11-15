@@ -5,7 +5,7 @@
     <ui-info-block
       :isOpen="isError"
       typeBlock="error"
-      @close-error="closeError"
+      @close-block="closeError"
     >
       {{ error }}
     </ui-info-block>

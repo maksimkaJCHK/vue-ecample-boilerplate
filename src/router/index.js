@@ -10,7 +10,7 @@ import PaleteView from '../views/PaleteView.vue';
 import Auth from '@/views/servicesForms/auth/Auth.vue';
 import RestorePassword from '@/views/servicesForms/restore-password/RestorePassword.vue';
 import Registration from '@/views/servicesForms/registration/Registration.vue';
-import PersonalAccount from '@/views/servicesForms/personal-account/PersonalAccount.vue';
+import SettingsView from '@/views/servicesForms/settings/SettingsView.vue';
 
 // Служебные страницы
 import NotFound from '@/views/services/NotFound.vue';
@@ -80,11 +80,11 @@ const router = createRouter({
       },
     },
     {
-      path: '/personal-account',
-      name: 'personalAccount',
-      component: PersonalAccount,
+      path: '/settings',
+      name: 'settings',
+      component: SettingsView,
       meta: {
-        title: "личный кабинет пользователя",
+        title: "Настройки пользователя",
         template: 'base',
         isAuth: true
       },

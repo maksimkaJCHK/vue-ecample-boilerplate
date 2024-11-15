@@ -1,8 +1,6 @@
 import { ref, watch } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
 
 import { useAuthStore } from '@/stores/useAuthStore.js';
-import { bUrl } from '@/helpers/helpers.js';
 import useAPI from '@/hooks/useAPI.js';
 
 import {
@@ -17,7 +15,7 @@ import {
 
 import { typeValidate } from '@/views/servicesForms/helpers.js';
 
-const usePersonalAccount = () => {
+const useSettings = () => {
   const {
     name: nameLS,
     lastName: lastNameLS,
@@ -44,36 +42,19 @@ const usePersonalAccount = () => {
   const isValidate = ref(false);
   const isSendForm = ref(false);
 
-  const router = useRouter();
-  const route = useRoute();
-
   const {
     load,
     error,
     response,
     request,
+    isError,
+    closeError,
+    isRespOk,
+    closeIsRespOk,
   } = useAPI({
     method: 'put',
-    url: '/personal-account'
+    url: '/settings'
   });
-
-  const typeValidate = ({
-    input,
-    error,
-    validateFunc
-  }) => {
-    let isValid = true;
-    error.value = '';
-
-    const { isError, errorText } = validateFunc(input.value);
-
-    if (isError) {
-      error.value = errorText;
-      isValid = !isError;
-    }
-
-    return { isValid };
-  }
 
   const validName = () => typeValidate({
     input: name,
@@ -158,9 +139,6 @@ const usePersonalAccount = () => {
           cEmail: email.value,
           cPassword: newPas.value,
         });
-
-        const url = route.query.from ? bUrl(route.query.from) : '/';
-        router.push(url);
       }
     } else {
       console.log('Болт, отправить не получится');
@@ -195,6 +173,12 @@ const usePersonalAccount = () => {
   });
 
   return {
+    error,
+    isError,
+    closeError,
+    response,
+    isRespOk,
+    closeIsRespOk,
     load,
     name,
     nameError,
@@ -215,4 +199,4 @@ const usePersonalAccount = () => {
   }
 }
 
-export default usePersonalAccount;
+export default useSettings;

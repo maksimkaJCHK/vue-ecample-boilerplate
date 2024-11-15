@@ -13,10 +13,10 @@
 
     <div class="top-info-serv">
       <router-link 
-        :to="{ name: 'personalAccount' }"
+        :to="{ name: 'settings' }"
         class="top-info-row"
         >
-        Личные настройки
+        Настройки пользователя
       </router-link>
       <div
         class="top-info-row"
@@ -75,7 +75,7 @@
 
     &-serv {
       right: 0;
-      width: 150px;
+      width: 200px;
       color: #000;
       display: none;
       background: #fff;

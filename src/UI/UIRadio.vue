@@ -58,7 +58,7 @@
       display: inline-block;
       position: relative;
       background: #fff;
-      padding: 2px 10px 2px 25px;
+      padding: 8px 10px 8px 25px;
       border: 1px solid var(--app-primary-color);
       box-shadow: 0 0 10px #aaa;
       border-radius: var(--app-border-radius);

@@ -16,7 +16,7 @@
     --spiner-opacity: .7;
     --spiner-bg: 255, 255, 255;
     --spiner-border-width: 6px;
-    --spiner-border-color: #1105ef;
+    --spiner-border-color: var(--app-primary-color);
 
     --spiner-width: 60px;
     --spiner-height: var(--spiner-width);

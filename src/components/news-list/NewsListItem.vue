@@ -6,6 +6,10 @@
       </router-link>
     </div>
 
+    <div class="time">
+      {{ props.time }}
+    </div>
+
     <div class="description">
       {{ description }}
     </div>
@@ -25,7 +29,8 @@
     'id',
     'title',
     'description',
-  ])
+    'time'
+  ]);
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +44,11 @@
 
     &:hover {
       box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+    }
+
+    .time {
+      font-size: 13px;
+      line-height: 120%;
     }
 
     .title {

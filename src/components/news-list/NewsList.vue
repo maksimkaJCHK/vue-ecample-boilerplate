@@ -14,9 +14,10 @@
 
     <template v-if="props.items && props.items.length">
       <news-list-item
-        v-for="{ title, id, description} in props.items"
+        v-for="{ title, id, description, time } in props.items"
         :key="id"
         :id="id"
+        :time="time"
         :title="title"
         :description="description"
       ></news-list-item>

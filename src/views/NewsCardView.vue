@@ -11,6 +11,7 @@
     </ui-info-block>
 
     <h1>{{ newsCard?.title }}</h1>
+    <div class="time">{{ bDate(newsCard?.time) }}</div>
 
     <p>{{ newsCard?.bigDescription }}</p>
 
@@ -26,6 +27,7 @@
   import { onBeforeMount, computed } from 'vue';
   import { useRoute, RouterLink } from 'vue-router';
 
+  import { bDate } from '@/helpers/date.js';
   import useAPI from '@/hooks/useAPI.js';
 
   const route = useRoute();
@@ -46,5 +48,11 @@
 <style lang="scss" scoped>
   .news-card {
     position: relative;
+  }
+
+  .time {
+    margin: 10px 0;
+    font-size: 13px;
+    line-height: 120%;
   }
 </style>
